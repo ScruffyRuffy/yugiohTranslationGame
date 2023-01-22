@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script>
+      var currentText="";
+      var index =0;
+      var histList=[];
+      const langs=["ceb","et","fy","da","eo","fy","ht","fr","de","en"];
+      async function translateCard(src, dst,sText){
+        var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="+ src + "&tl=" + dst + "&dt=t&q=" + encodeURI(sText);
+        datarec = await fetch(url).then(response => response.json()).then(data =>{ return data[0][0][0]})
+        console.log(datarec);
+        if(index+1<=9){
+        translateCard(langs[index],langs[index+1],datarec);
+        index+=1;
+        }
+        else{
+          document.getElementById("resultText").innerHTML = datarec;
+          histList.push(document.getElementById("cardName").value+": "+datarec);
+          var string="";
+          histList.forEach(Element => {
+            string+=Element;
+            string+="<br>";
+          });
+          document.getElementById("History").innerHTML =string;
+        }
+      
+      }
+      async function translateName(){
+        index=0;
+        var sourceText = document.getElementById("cardName").value;
+        console.log(sourceText);
+        await translateCard("en",langs[0],sourceText);
+        ;
+      }
+    </script>
+  </head>
+  <body>
+    
+    <label for="cardName">Please enter the name of a yu-gi-oh! card</label>
+    <input type="text" id="cardName" name="cardName" value="">
+    <input id="button" type="button" value ="Confirm" onclick="translateName()" >
+    <h1>Result:</h1>
+    <p id="resultText"></p>
+    <h1>History:</h1>
+    <p id="History"></p>
+    
+  </body>
+</html>
