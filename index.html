@@ -1,5 +1,43 @@
 <html>
   <head>
+    <style>
+        body{margin: 0;}
+
+        ul.Nav
+        {
+            background-color: rgb(85, 9, 9);
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            padding-bottom: 5px;
+        }
+
+        li.Nav
+        {
+            display: inline;
+            margin: 0;
+            border-right: 3px solid white;
+            padding-right: 6px;
+            padding-left: 5px;
+            
+        }
+        li.Nav:last-child
+        {
+          display: inline;
+            margin: 0;
+            border-right: 3px rgb(85, 9, 9);
+            padding-right: 4px;
+            padding-left: 5px;
+        }
+
+        li.Nav a
+        {
+            text-align: center;
+            font-size: x-large;
+            color: aliceblue;
+        }
+
+    </style>
     <script>
       var currentText="";
       var index =0;
@@ -35,7 +73,10 @@
     </script>
   </head>
   <body>
-    
+    <ul class="Nav">
+        <li class="Nav"><a href="index.html">Home</a></li>
+        <li class="Nav"><a href="about.html" >About</a></li>
+     </ul>
     <label for="cardName">Please enter the name of a yu-gi-oh! card</label>
     <input type="text" id="cardName" name="cardName" value="">
     <input id="button" type="button" value ="Confirm" onclick="translateName()" >
