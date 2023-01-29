@@ -42,7 +42,7 @@
       var currentText="";
       var index =0;
       var histList=[];
-      const langs=["ceb","et","fy","da","eo","fy","ht","fr","de","en"];
+      const langs=["ceb","et","fy","da","eo","fy","ha","fr","de","en"];
       async function translateCard(src, dst,sText){
         var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="+ src + "&tl=" + dst + "&dt=t&q=" + encodeURI(sText);
         datarec = await fetch(url).then(response => response.json()).then(data =>{ return data[0][0][0]})
